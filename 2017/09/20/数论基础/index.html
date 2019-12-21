@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OI,数论," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="数论基础作为一门研究整数性质的哲学，数论在 OI 中还是很受欢迎的，它凭借着它别具一格的特色和令人…… 我编不下去了，开始研究数论。。 一些小知识 若 $b % a &#x3D; 0$ 即 $b &#x3D; ka$ ，则我们成 $a$ 整除 $b$ ，记作 $a | b$ 。  若 $a | b$ ，则我们称 $a$ 为 $b$ 的一个因数(或约数)。  若 $a | b$ 且 $a | c$ ，则我们称 $a$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论基础">
+<meta property="og:url" content="http://aliayc.com/2017/09/20/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Aliayc&#39;s Blog">
+<meta property="og:description" content="数论基础作为一门研究整数性质的哲学，数论在 OI 中还是很受欢迎的，它凭借着它别具一格的特色和令人…… 我编不下去了，开始研究数论。。 一些小知识 若 $b % a &#x3D; 0$ 即 $b &#x3D; ka$ ，则我们成 $a$ 整除 $b$ ，记作 $a | b$ 。  若 $a | b$ ，则我们称 $a$ 为 $b$ 的一个因数(或约数)。  若 $a | b$ 且 $a | c$ ，则我们称 $a$">
+<meta property="article:published_time" content="2017-09-20T13:06:43.000Z">
+<meta property="article:modified_time" content="2017-10-06T06:24:30.000Z">
+<meta property="article:author" content="Aliayc">
+<meta property="article:tag" content="OI">
+<meta property="article:tag" content="数论">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Aliayc.com/2017/09/20/数论基础/"/>
+
+
+
+
+
+  <title>数论基础 | Aliayc's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Aliayc's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Aliayc.com/2017/09/20/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aliayc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aliayc's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数论基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T21:06:43+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数论基础"><a href="#数论基础" class="headerlink" title="数论基础"></a>数论基础</h1><p>作为一门研究整数性质的哲学，数论在 OI 中还是很受欢迎的，它凭借着它别具一格的特色和令人……</p>
+<p>我编不下去了，开始研究数论。。</p>
+<h2 id="一些小知识"><a href="#一些小知识" class="headerlink" title="一些小知识"></a>一些小知识</h2><ul>
+<li><p>若 $b % a = 0$ 即 $b = ka$ ，则我们成 $a$ <strong>整除</strong> $b$ ，记作 $a | b$ 。</p>
+</li>
+<li><p>若 $a | b$ ，则我们称 $a$ 为 $b$ 的一个<strong>因数(或约数)</strong>。</p>
+</li>
+<li><p>若 $a | b$ 且 $a | c$ ，则我们称 $a$ 为 $b$ 和 $c$ 的公因数，如果 $a$ 为 $b$ 和 $c$ 所有公因数中最大的，则我们称 $a$ 为 $b$ 和 $c$ 的<strong>最大公约数</strong>。</p>
+</li>
+<li><p>如果 $a % c = b % c$ ，则我们称在 $\mod c$ 下 $a$ 与 $b$ <strong>同余</strong>，记作 $a ≡ b \mod c$ 。同时这个也称作 $c$ 的<strong>同余系</strong>。</p>
+</li>
+<li><p>如果 $\gcd(a, b) = 1$ 则称 $a$ 与 $b$ <strong>互质</strong>。</p>
+</li>
+</ul>
+<h2 id="欧几里德算法"><a href="#欧几里德算法" class="headerlink" title="欧几里德算法"></a>欧几里德算法</h2><p>我们用 $\gcd(a, b)$ 代表 $a$ 和 $b$ 的最大公约数，那么它具有如下性质： $\gcd(a, b) = \gcd(b, a % b)$ 。</p>
+<p>证明如下：</p>
+<p>显然我们如果证明出来 $\gcd(a, b)$ = $\gcd(a, b + a)$ 即可证明此性质，因为显然 $\gcd(a, b) = \gcd(b, a)$ 。</p>
+<p>我们设 $k = \gcd(a, b)$ ，则我们设 $a = km$, $b = kn$ 。 则 $a + b = k(m + n)$ ，如此我们可以证明 $a$, $b$ 的最大公因数是 $a$, $b + a$ 的公因数 (显然， $k | (a + b)$ 且 $k | a$ ) 。 那么如何证明 $k$ 是 $a$, $b + a$ 的最大公约数呢？</p>
+<p>我们假设 $k$ 不是 $a$, $b + a$ 的最大公约数，则 $a$, $b + a$ 一定存在一个最大公约数 r 满足 $r &gt; k$ 。则我们设 $a = rc$, $b + a = rv$ 则 $b = b + a - a = r(v - c)$ 则 $a$, $b$ 存在公约数 $r$ 且 $r &gt; k$， 这与 $k$ 是 $a$, $b$ 的最大公约数相矛盾，所以 $k$ 为 $a$ 和 $b + a$ 的最大公约数。</p>
+<p>证明出来了这一点我们就可以放心地写 gcd 的代码了：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? gcd(b, a % b) : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>欧几里得算法的时间复杂度为 O(log(a + b)) 。</p>
+<p>显然当 a 和 b 为 Fibnacci 数列相邻两项时 gcd 需要的计算次数最多， 分析 Fibnacci 数列的通项公式，我们可以得知对于计算 n 次的欧几里得算法，其 a 和 b 的上界为 Fib[a + b]， 如此，我们就可以简单说明其复杂度为 log 级别的。</p>
+<h2 id="拓展欧几里德"><a href="#拓展欧几里德" class="headerlink" title="拓展欧几里德"></a>拓展欧几里德</h2><p>欧几里得算法是一个非常神奇的算法，当然是有大用处的，我们可以用来解决像 $ax + by = c$ 的不定方程求整数解问题，我们分析如何来求解。</p>
+<p>我们先来分析对于某个解，我们如何求出其他解。</p>
+<p>即我们知道了 $ax_0 + by_0 = c$ 。</p>
+<p>则 $a(x_0 + b - b) + by_0 = c$</p>
+<p>$a(x_0 + b) + b(y_0 - a) = c$</p>
+<p>即我们如果知道了一组解 $x_0$, $y_0$ ，我们可以通过将 $x_0$ 增加若干的 $b$ 而 $y_0$ 增加相同数目的 $a$ 来找出另一组解，即我们知道其中一组解就可以知道所有解。</p>
+<p>接下来我们考虑如何求出其中一组解。</p>
+<p>对于方程 $ax + by = c$ ，其有解的充要条件是 $\gcd(a, b) | c$ ，这是显而易见的，起码对于必要条件如此。所以说，我们可以将两边同时除以 $c$ ，就可以转变为 $ax + by = 1$ 了。</p>
+<p>接下来，我们对于 $ax + by = 1$ 这个方程讨论解。</p>
+<p>我们设 $a = kb + r$ ，其中 $0 \leq r &lt; b$， 即 $k = ⌊a / b⌋$, $r = a % b$ 。</p>
+<p>根据某个奇奇怪怪的定理，这样分解的 k 和 r 都是唯一的，这显然是显然的。</p>
+<p>之后方程就变成了 $(kb + r)x + by = 1$</p>
+<p>$b(kx + y) + rx = 1$</p>
+<p>接下来我们将 $b$ 看做新的 $a$ ，将 $(kx + y)$ 看做新的 $x$ ， 将 $r$ 看做新的 $b$ ，将 $x$ 看做新的 $y$ ，对这个方程进行求解，求完解之后我们转化为当前的 $x$ 和 $y$ 即可。</p>
+<p>直到最后， $b$ 会变成 $0$ ，这时候就变成了 $ax = 1$ 的形式，这个时候若 $a = 1$ 则表示有解，且 $x$ 为 $1$ ， $y$ 我们让它等于 $0$ 就好啦，其实这里 $y$ 等于什么并不会影响结果的正确性，只是求出来的解不一样而已。并且这个时候 $a$ 就是最开始的时候 $a$ 和 $b$ 的最大公约数。</p>
+<p>所以我们就可以贴出代码了：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">0</span>) <span class="keyword">return</span> x = <span class="number">1</span>, y = <span class="number">0</span>, a;</span><br><span class="line">    <span class="keyword">int</span> r = exgcd(b, a % b, y, x);</span><br><span class="line">    <span class="keyword">return</span> y -= a / b * x, r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线性同余方程"><a href="#线性同余方程" class="headerlink" title="线性同余方程"></a>线性同余方程</h2><p>接下来，我们需要对 $ax ≡ 1 \mod b$ 的解。</p>
+<p>显然这个方程就是 $ax % b = 1$ 也就是对 $ax + by = 1$ (注意这里 $y$ 一般是负数，若 $a &gt; b$)。</p>
+<p>显然这个方程有解的充要条件是 $\gcd(a, b) = 1$ 。</p>
+<p>我们对不定方程求解即可得到这个同余方程的解。</p>
+<h2 id="逆元"><a href="#逆元" class="headerlink" title="逆元"></a>逆元</h2><p>我们对于一个数 $a$ ，如果存在一个整数 $b$ 使得 $ab ≡ 1 \mod p$ 则称 $b$ 是 $a$ 的逆元，记作 $a^{-1}$。</p>
+<p>所以我们显然可以用拓展欧几里得来求出一个数的逆元，也就是对 $a×a^{-1} ≡ 1 \mod p$ 进行求解。</p>
+<p>然而我们还有一个更加方便的方法，就是利用费马小定理，当 $p$ 是质数的时候 $a^{-1}  ≡ a^{p - 1} \mod p$。这样的话我们可以用快速幂来进行求解。</p>
+<p>以上求解逆元的方法都是 O(log a) 的，那么我们有没有一种方法可以在 O(n) 的时间内求出 $1-n$ 的所有逆元呢？</p>
+<h2 id="线性求逆元"><a href="#线性求逆元" class="headerlink" title="线性求逆元"></a>线性求逆元</h2><p>我们考虑取模的定义式</p>
+<p>$p % a = p - ⌊p / a⌋ × a$</p>
+<p>我们将其放在 $p$ 的同余系下</p>
+<p>$p % a ≡ - ⌊p / a⌋ × a \mod p$</p>
+<p>我们在两边同时乘以 $(p % a)^{-1}a^{-1}$</p>
+<p>$a^{-1} ≡ -⌊p / a⌋ × (p % a)^{-1} \mod p$</p>
+<p>因为 $p % a$ 肯定是小于 $a$ 的，所以当我们知道了 $1～(a - 1)$ 所有数的逆元，我们就可以在 O(1) 时间复杂度内求出 $a$ 的逆元。</p>
+<p>所以说代码也是极短，其中 $p$ 是要 mod 的数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetInv</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        inv[i] = -p / a * inv[p % a] % p + p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CRT-中国剩余定理"><a href="#CRT-中国剩余定理" class="headerlink" title="(CRT) 中国剩余定理"></a>(CRT) 中国剩余定理</h2><p>我们考虑过了对 $ax ≡ 1 \mod p$ 进行求解，但是对于线性同余方程组我们如何进行求解呢？这就需要 <strong>CRT</strong> 了， <strong>CRT</strong> 全称 <strong>Chinese Remainder Theorem</strong> ，叫<strong>中国剩余定理</strong>，讲解了如何构造<strong>同余线性方程组</strong>的解。</p>
+<p>我们考虑对于线性同余方程组</p>
+<p>$x ≡ a_1 \mod m_1$</p>
+<p>$x ≡ a_2 \mod m_2$</p>
+<p>$\dots$</p>
+<p>$x ≡ a_n \mod m_n$</p>
+<p>我们可以设 $M = \prod_\limits{i = 1}^na_i$， 令 $M_i = M / m_i$， $t_i = M_i^{-1} \mod m_i$ 。</p>
+<p>如此，我们就可以构造出解 $x$ 为 $\sum_\limits{i = 1}^na_it_iM_i$ 。</p>
+<p>这样构造出来的答案的正确性是显然的，每一个 $M_it_ia_i$ 对于 $\mod mi$ 为 $a_i$ ，对于其他的 $m$ 则取模后为 $0$ ，将每一个 $M_it_ia_i$ 简单相加即可构造答案。</p>
+<p>另外对于模数不互质的情况，我们便无法通过此种方式求解了，我们可以采用一种合并两个方程为一个方程的方式求解。</p>
+<p>考虑如何把两个方程转化为一个方程：</p>
+<p>$$ x ≡ a_1 \mod m_1 $$<br>$$ x ≡ a_2 \mod m_2 $$<br>由方程可知<br>$$ x = k_1m_1 + a_1 $$<br>$$ x = k_2m_2 + a_2 $$<br>$$ k_1m_1 + a_1 = k_2m_2 + a_2 $$<br>$$ k_1m_1 ≡ a_2 - a_1 \mod m_2 $$   </p>
+<p>令 $d = \gcd(m1, m2)$，$c = a_2 - a_1$</p>
+<p>$$ \frac{m_1}dk_1 ≡ \frac cd \mod \frac{m_2}d $$<br>$$ k_1 ≡ \frac cd \times (\frac{m_1}d)^{-1} \mod \frac{m_2}d $$  </p>
+<p>令 $K = \frac cd \times (\frac{m_1}d)^{-1}$  </p>
+<p>$$ k_1 = p\frac{m_2}d + K $$<br>$$ x = p\frac{m_1m_2}d + m_1K + a_1 $$<br>$$ x ≡ m_1K + a_1 \mod \frac{m_1m_2}d $$</p>
+<h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>欧拉函数 $\phi$ 为数论中的一个很重要的函数。我们定义 $\phi(n)$ 为 $1-n$ 中与 $n$ 互质的数的个数。</p>
+<p>即我们可以说 ： </p>
+<p>$$ \phi(n) = \sum_{i = 1}^n[\gcd(i, n) = 1] $$</p>
+<p>接下来我们考虑如何求 $\phi(n)$</p>
+<p>我们设 $n = p_1^{k_1} × p_2^{k_2} × p_3^{k_3} × \dots$</p>
+<p>其中 $p_1, p_2, p_3, \dots$ 为质数。</p>
+<p>则 $\phi(n) = n×(1 - \frac1{p_1})×(1 - \frac1{p_2})×\dots$</p>
+<p>即在 $1 - n$ 中能被 $p_1$ 整除的占 $\frac1{p_1}$ 则不能被 $p_1$ 整除的占 $1 - \frac1{p_1}$， $n$ 乘上 $1 - \frac1{p_1}$ 即为不能被 $p_1$ 整除的数的个数。</p>
+<p>所以我们可以把求 $\phi$ 的套在质因数分解里边，即：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">phi</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= x; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>) ret /= i, ret *= i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1</span>) ret /= x, ret *= x - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线性筛"><a href="#线性筛" class="headerlink" title="线性筛"></a>线性筛</h2><p>线性筛可以在 O(n) 的时间复杂度内求出 $1 - n$ 之内的所有素数，还可以筛出许多积性函数的值，如 $\phi$，$\mu$ 等。</p>
+<p>我们先贴出代码，来分析一下为什么其时间复杂度为 O(n) 的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shaker</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    notPrime[<span class="number">1</span>] = <span class="number">1</span>, phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!notPrime[i]) prime[cnt++] = i, phi[i] = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cnt &amp;&amp; prime[j] * i &lt;= n; j++)&#123;</span><br><span class="line">            notPrime[prime[j] * i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>)&#123;</span><br><span class="line">                phi[i * prime[j]] = phi[i] * prime[j];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            phi[i * prime[j]] = phi[i] * (prime[j] - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们加入了求 $\phi$ 的过程，其他地方都是很显然的，但是对于</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phi[i * prime[j]] = phi[i] * prime[j];</span><br></pre></td></tr></table></figure>
+<p>这一句可能不是很好理解，具体说明会在下面给出。</p>
+<p>我们可以注意到如果 $i % prime[j] = 0$ 的话我们跳出循环，正是因为这个剪枝才造成了其 O(n) 的时间复杂度。</p>
+<p>即如果 $i % prime[j] = 0$，那么再往后循环的 $i * prime[j]$ 一定会被当前的 $prime[j]$ 筛掉，故可以 break 掉。</p>
+<p>我们亦可将求 $\mu$ 的代码插入其中，即：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Shaker</span><span class="params">()</span></span>&#123;</span><br><span class="line">	mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">500000</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!not_prime[i])&#123;</span><br><span class="line">			mu[i] = <span class="number">-1</span>;</span><br><span class="line">			prime[++tot] = i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i * prime[j] &lt;= <span class="number">50000</span>; j++)&#123;</span><br><span class="line">			not_prime[i * prime[j]] = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>)&#123;</span><br><span class="line">				mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			mu[i * prime[j]] = -mu[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>即可线性求 $\mu$。</p>
+<p>另外对于线性求 $\phi$ 的一点，即</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>)</span><br><span class="line">    phi[i * prime[j]] = phi[i] * prime[j];</span><br></pre></td></tr></table></figure>
+<p>可能并不是非常显然。我们在证明 $\gcd$ 时提到过 $\gcd(a + b, b) = \gcd(a, b)$ ，即可理解为若 $a$ 与 $b$ 互质，则 $a + b$ 与 $b$ 互质，否则反之。</p>
+<p>若 $i % p = 0$, 则表示一个数若与 $i$ 互质，则与 $i * p$ 互质，否则反之。</p>
+<p>故在区间 $[1, i \times p]$ 中与 $i \times p$ 互质的数的个数为 $\phi(i) \times p = \phi(i \times p)$。</p>
+<h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><p>在说反演之前我们先说一下狄利克雷(Dirichlet)卷积。</p>
+<p>定义两个数论函数的狄利克雷卷积如下：</p>
+<p>$$ (f * g)(n) = \sum_{d|n}f(d)g(\frac nd) $$</p>
+<p>狄利克雷卷积遵循交换律，结合律和分配律。</p>
+<p>显然地，若 $f，g$ 均为积性函数，$f * g$ 也为积性函数。</p>
+<p>我们设一个单位函数 $e(n) = \begin{cases}<br>1 &amp;&amp; n = 1 \<br>0 &amp;&amp; n &gt; 1<br>\end{cases}$</p>
+<p>，我们把 $e$ 称作 $1$。</p>
+<p>另外对于莫比乌斯函数 $\mu$ 的定义为:</p>
+<p>$$\mu(n) = \begin{cases}<br>1 &amp;&amp; n = 1\<br>(-1)^k &amp;&amp; n = p_1p_2\dots p_k\<br>0 &amp;&amp; else<br>\end{cases}$$</p>
+<p>然后我们可以证明：  </p>
+<p>$$ [n = 1] = \sum_{d|n}\mu(d) $$  </p>
+<p>我们来看莫比乌斯反演，若有两个函数 $f，g$ 满足：  </p>
+<p>$$ f(n) = \sum_{d|n}g(d) $$  </p>
+<p>则它们也满足  </p>
+<p>$$ g(n) = \sum_{d|n}\mu(d)f(\frac nd) $$  </p>
+<p>我们可以利用卷积很容易地证明这个公式，即 </p>
+<p>$$ f = g * 1 $$  </p>
+<p>我们在两边同时乘上 $\mu$ 即可得到  </p>
+<p>$$ g = \mu * f $$  </p>
+<p>即为所求。</p>
+<p>这个公式即为莫比乌斯反演的公式，这个公式可以极大简化计算，比较重要。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OI/" rel="tag"># OI</a>
+          
+            <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/24/KMP/" rel="prev" title="KMP">
+                KMP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Aliayc" />
+          <p class="site-author-name" itemprop="name">Aliayc</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数论基础"><span class="nav-number">1.</span> <span class="nav-text">数论基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些小知识"><span class="nav-number">1.1.</span> <span class="nav-text">一些小知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧几里德算法"><span class="nav-number">1.2.</span> <span class="nav-text">欧几里德算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展欧几里德"><span class="nav-number">1.3.</span> <span class="nav-text">拓展欧几里德</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性同余方程"><span class="nav-number">1.4.</span> <span class="nav-text">线性同余方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逆元"><span class="nav-number">1.5.</span> <span class="nav-text">逆元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性求逆元"><span class="nav-number">1.6.</span> <span class="nav-text">线性求逆元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CRT-中国剩余定理"><span class="nav-number">1.7.</span> <span class="nav-text">(CRT) 中国剩余定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉函数"><span class="nav-number">1.8.</span> <span class="nav-text">欧拉函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">1.9.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">1.10.</span> <span class="nav-text">莫比乌斯反演</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aliayc</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
