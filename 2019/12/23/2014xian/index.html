@@ -358,10 +358,10 @@
 <p>我们可以看到 $16,13,10,7,4$ 就是从 $16$ 开始不断减 $3$。</p>
 <p>那么我们可以一次性把这些数全部统计进去，大于 $b$ 的数一共 $\lfloor \frac ab\rfloor$ 种。</p>
 <p>然后加上 $g(3,1)$ 就好了。</p>
-<p>也就是 $g(b, a % b)$。</p>
-<p>注意这里 $b$ 可能在后边，变成 $g(a % b, b)$。</p>
+<p>也就是 $g(b, a \mod b)$。</p>
+<p>注意这里 $b$ 可能在后边，变成 $g(a \mod b, b)$。</p>
 <p>主要是看 $\lfloor \frac ab\rfloor$ 奇偶性，奇数在前偶数在后。</p>
-<p>需要特判 $a % b = 0$ 的时候，这个时候答案就直接是 $\frac ab + 1$。</p>
+<p>需要特判 $a \mod b = 0$ 的时候，这个时候答案就直接是 $\frac ab + 1$。</p>
 <h3 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h3><p>那么我们接下来考虑 $a = b$ 的情况，这里直接返回 $2$ 就好了。</p>
 <h3 id="Part-3"><a href="#Part-3" class="headerlink" title="Part 3"></a>Part 3</h3><p>接下来就是 $a &lt; b$ 的情况，我们举一个具体例子来看下。</p>
 <p>$$ 2, 5, 3, 2 $$</p>
